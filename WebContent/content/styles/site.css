@@ -1,0 +1,41 @@
+html, body {
+	height: 100%; margin: 0px;
+}
+
+body {
+	background-color: #e6e6e6; font-family: Helvetica; font-size: 12pt;
+}
+
+#container {
+	display: block; position: absolute; bottom:0; top:0; left:0; right:0; margin: 8px; 
+}
+
+#msgContainer {
+	position: absolute; top: 0px; bottom: 45px; background-color: white; width: 100%;
+}
+
+#msgContainer .msgrow {
+	background-color: #808080;
+	color: white;
+	font-weight: bold;
+	margin: 2px 0px 2px 0px;
+	padding: 6px;
+	border-radius: 12px;
+	border: 1px solid;
+}
+
+#msgController {
+	position: absolute; bottom: 0px; height: 40px; display: flex; width: 100%;
+}
+
+#loginPanel {
+	width: 300px; padding: 5px; margin: 10px auto; 
+}
+
+#loginPanel #infoLabel {
+	color: green; text-align: center;
+}
+
+#loginPanel .loginInput {
+	width: 100%; border-radius: 6px; margin: 3px 0px;
+}
