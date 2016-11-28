@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.readlearncode</groupId>
-    <artifactId>chat-room</artifactId>
+    <artifactId>command-line-chat-room</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>chat-room</name>
+    <name>command-line-chat-room</name>
     <url>http://www.readlearncode.com</url>
 
     <properties>
@@ -45,7 +45,25 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
+        </dependency>
+
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.tyrus</groupId>
+            <artifactId>tyrus-server</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.tyrus</groupId>
+            <artifactId>tyrus-client</artifactId>
+            <version>1.1</version>
         </dependency>
 
         <!-- GlassFish specific dependencies, could go away in Java EE 8 -->
@@ -168,7 +186,6 @@
                                     <url>http://download.java.net/glassfish/4.1/release/glassfish-4.1.zip</url>
                                 </zipUrlInstaller>
                             </container>
-
                         </configuration>
                     </plugin>
                 </plugins>

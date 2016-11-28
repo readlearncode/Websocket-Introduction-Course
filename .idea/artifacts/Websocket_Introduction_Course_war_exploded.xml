@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Websocket-Introduction-Course:war exploded">
+    <output-path>$PROJECT_DIR$/target/chat-room</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Websocket-Introduction-Course" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax:javaee-api:7.0" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.0" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: javax.websocket:javax.websocket-api:1.0" />
+          <element id="library" level="project" name="Maven: org.glassfish.tyrus:tyrus-server:1.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.tyrus:tyrus-core:1.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.tyrus:tyrus-spi:1.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.tyrus:tyrus-websocket-core:1.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.tyrus:tyrus-client:1.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.4" />
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:5.2" />
+          <element id="library" level="project" name="Maven: org.primefaces.themes:ui-lightness:1.0.10" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/chat-room/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="Websocket-Introduction-Course/web/Web" />
+    </root>
+  </artifact>
+</component>
