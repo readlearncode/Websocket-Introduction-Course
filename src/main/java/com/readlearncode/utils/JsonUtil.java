@@ -1,4 +1,4 @@
-package com.readlearncode.infrastructure;
+package com.readlearncode.utils;
 
 import javax.json.Json;
 

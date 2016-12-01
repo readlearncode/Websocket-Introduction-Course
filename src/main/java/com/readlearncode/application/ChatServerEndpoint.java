@@ -1,56 +1,79 @@
 package com.readlearncode.application;
 
 import com.readlearncode.domain.Message;
+import com.readlearncode.domain.MessageEvent;
+import com.readlearncode.domain.Room;
 import com.readlearncode.infrastructure.MessageDecoder;
 import com.readlearncode.infrastructure.MessageEncoder;
+import com.readlearncode.infrastructure.cdi.MessageReceived;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 import javax.websocket.*;
+import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
-import static java.lang.String.format;
+import static com.readlearncode.utils.Messages.WELCOME_MESSAGE;
+import static com.readlearncode.utils.Messages.objectify;
 
 /**
  * @author Alex Theedom
  * @version 1.0
  */
-@ServerEndpoint(value = "/chat", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
+@ApplicationScoped
+@ServerEndpoint(value = "/chat/{roomName}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
 public class ChatServerEndpoint {
 
-    static Set<Session> peers = Collections.synchronizedSet(new HashSet<Session>());
+    public static final Map<String, Room> rooms = Collections.synchronizedMap(new HashMap<String, Room>());
+
+    private static String[] roomNames = {"Java EE 7", "Java SE 8", "Websockets", "JSON"};
+
+
+    @Inject
+    @MessageReceived
+    private Event<MessageEvent> messageReceived;
+
+
+    @PostConstruct
+    public void initialise() {
+        Arrays.stream(roomNames).forEach(roomName -> rooms.computeIfAbsent(roomName, new Room(roomName)));
+    }
 
     @OnOpen
-    public void onOpen(Session session) {
-        System.out.println(format("%s joined the chat room.", session.getId()));
-        peers.add(session);
+    public void onOpen(final Session session, @PathParam("roomName") final String roomName) {
+
+        Room room = rooms.get(roomName);
+        session.getUserProperties().putIfAbsent("roomName", roomName);
+
+        session.setMaxIdleTimeout(5 * 60 * 1000); // Timeouts after 5 minutes
+
+        room.join(session);
+        room.sendMessage(objectify(WELCOME_MESSAGE));
     }
 
     @OnMessage
     public void onMessage(Message message, Session session) throws IOException, EncodeException {
-        //broadcast the message
-        for (Session peer : peers) {
-            if (!session.getId().equals(peer.getId())) { // do not resend the message to its sender
-                peer.getBasicRemote().sendObject(message);
-            }
-        }
+
+        System.out.println("Message received onMessage");
+
+        rooms.get(extractRoomFrom(session)).sendMessage(message);
+        messageReceived.fire(new MessageEvent(message, session));
     }
 
     @OnClose
     public void onClose(Session session) throws IOException, EncodeException {
-        System.out.println(format("%s left the chat room.", session.getId()));
-        peers.remove(session);
-        //notify peers about leaving the chat room
-        for (Session peer : peers) {
-            Message message = new Message();
-            message.setSender("ChatServer");
-            message.setContent(format("%s left the chat room", (String) session.getUserProperties().get("user")));
-            message.setReceived(new Date());
-            peer.getBasicRemote().sendObject(message);
-        }
+        rooms.get(extractRoomFrom(session)).leave(session);
+    }
+
+    private String extractRoomFrom(Session session) {
+        return ((String) session.getUserProperties().get("roomName"));
     }
 
 }

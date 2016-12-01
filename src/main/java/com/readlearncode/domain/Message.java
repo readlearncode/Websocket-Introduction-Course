@@ -1,5 +1,6 @@
 package com.readlearncode.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,6 +13,19 @@ public class Message {
     private String content;
     private String sender;
     private Date received;
+
+    public Message() {
+    }
+
+    public Message(String content, String sender) {
+        this(content, sender, Calendar.getInstance().getTime());
+    }
+
+    public Message(String content, String sender, Date received) {
+        this.content = content;
+        this.sender = sender;
+        this.received = received;
+    }
 
     public String getContent() {
         return content;
