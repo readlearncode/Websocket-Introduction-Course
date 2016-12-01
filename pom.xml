@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.readlearncode</groupId>
-    <artifactId>java-chat</artifactId>
+    <artifactId>dukechat</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -21,7 +21,7 @@
         <javaee-api.version>7.0</javaee-api.version>
     </properties>
 
-    <name>java-chat</name>
+    <name>dukechat</name>
     <url>http://www.readlearncode.com</url>
 
     <repositories>
@@ -91,7 +91,7 @@
 
 
     <build>
-        <finalName>java-chat</finalName>
+        <finalName>dukechat</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -162,7 +162,7 @@
                                     <artifactId>${project.artifactId}</artifactId>
                                     <type>war</type>
                                     <properties>
-                                        <context>/java-chat</context>
+                                        <context>/dukechat</context>
                                     </properties>
                                 </deployable>
                             </deployables>

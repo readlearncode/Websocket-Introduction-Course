@@ -1,6 +1,6 @@
-package com.readlearncode.infrastructure;
+package com.readlearncode.dukechat.infrastructure;
 
-import com.readlearncode.domain.Message;
+import com.readlearncode.dukechat.domain.Message;
 
 import javax.json.Json;
 import javax.json.JsonObject;

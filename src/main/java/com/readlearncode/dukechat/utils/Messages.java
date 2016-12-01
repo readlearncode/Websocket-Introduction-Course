@@ -1,6 +1,6 @@
-package com.readlearncode.utils;
+package com.readlearncode.dukechat.utils;
 
-import com.readlearncode.domain.Message;
+import com.readlearncode.dukechat.domain.Message;
 
 import java.util.Calendar;
 import java.util.Date;

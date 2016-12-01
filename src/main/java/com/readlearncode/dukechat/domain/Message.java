@@ -1,4 +1,4 @@
-package com.readlearncode.domain;
+package com.readlearncode.dukechat.domain;
 
 import java.util.Calendar;
 import java.util.Date;

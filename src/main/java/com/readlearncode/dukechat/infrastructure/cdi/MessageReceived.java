@@ -1,4 +1,4 @@
-package com.readlearncode.infrastructure.cdi;
+package com.readlearncode.dukechat.infrastructure.cdi;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;

@@ -1,9 +1,9 @@
-package com.readlearncode.application;
+package com.readlearncode.dukechat.application;
 
 
-import com.readlearncode.domain.Message;
-import com.readlearncode.domain.MessageEvent;
-import com.readlearncode.infrastructure.cdi.MessageReceived;
+import com.readlearncode.dukechat.domain.Message;
+import com.readlearncode.dukechat.domain.MessageEvent;
+import com.readlearncode.dukechat.infrastructure.cdi.MessageReceived;
 
 import javax.ejb.Singleton;
 import javax.enterprise.event.Observes;

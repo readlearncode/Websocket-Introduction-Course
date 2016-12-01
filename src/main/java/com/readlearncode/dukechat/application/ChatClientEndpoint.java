@@ -1,8 +1,8 @@
-package com.readlearncode.application;
+package com.readlearncode.dukechat.application;
 
-import com.readlearncode.domain.Message;
-import com.readlearncode.infrastructure.MessageDecoder;
-import com.readlearncode.infrastructure.MessageEncoder;
+import com.readlearncode.dukechat.domain.Message;
+import com.readlearncode.dukechat.infrastructure.MessageDecoder;
+import com.readlearncode.dukechat.infrastructure.MessageEncoder;
 
 import javax.websocket.ClientEndpoint;
 import javax.websocket.OnMessage;

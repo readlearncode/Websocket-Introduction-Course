@@ -1,11 +1,11 @@
-package com.readlearncode.application;
+package com.readlearncode.dukechat.application;
 
-import com.readlearncode.domain.Message;
-import com.readlearncode.domain.MessageEvent;
-import com.readlearncode.domain.Room;
-import com.readlearncode.infrastructure.MessageDecoder;
-import com.readlearncode.infrastructure.MessageEncoder;
-import com.readlearncode.infrastructure.cdi.MessageReceived;
+import com.readlearncode.dukechat.domain.Message;
+import com.readlearncode.dukechat.domain.MessageEvent;
+import com.readlearncode.dukechat.domain.Room;
+import com.readlearncode.dukechat.infrastructure.MessageDecoder;
+import com.readlearncode.dukechat.infrastructure.MessageEncoder;
+import com.readlearncode.dukechat.infrastructure.cdi.MessageReceived;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -20,8 +20,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.readlearncode.utils.Messages.WELCOME_MESSAGE;
-import static com.readlearncode.utils.Messages.objectify;
+import static com.readlearncode.dukechat.utils.Messages.WELCOME_MESSAGE;
+import static com.readlearncode.dukechat.utils.Messages.objectify;
 
 /**
  * @author Alex Theedom

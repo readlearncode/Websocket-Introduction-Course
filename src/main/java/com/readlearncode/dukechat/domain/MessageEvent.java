@@ -1,4 +1,4 @@
-package com.readlearncode.domain;
+package com.readlearncode.dukechat.domain;
 
 import javax.websocket.Session;
 

@@ -1,7 +1,7 @@
-package com.readlearncode.application;
+package com.readlearncode.dukechat.application;
 
 
-import com.readlearncode.utils.Messages;
+import com.readlearncode.dukechat.utils.Messages;
 
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;

@@ -1,4 +1,4 @@
-package com.readlearncode.utils;
+package com.readlearncode.dukechat.utils;
 
 import javax.json.Json;
 

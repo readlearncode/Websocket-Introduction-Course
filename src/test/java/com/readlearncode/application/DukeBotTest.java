@@ -1,6 +1,6 @@
 package com.readlearncode.application;
 
-import com.readlearncode.domain.Message;
+import com.readlearncode.dukechat.domain.Message;
 import org.junit.Test;
 
 import java.util.Collections;
