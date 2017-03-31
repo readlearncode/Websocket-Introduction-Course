@@ -15,10 +15,12 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import static com.readlearncode.dukechat.utils.Messages.WELCOME_MESSAGE;
 import static com.readlearncode.dukechat.utils.Messages.objectify;
@@ -30,6 +32,9 @@ import static com.readlearncode.dukechat.utils.Messages.objectify;
 @ApplicationScoped
 @ServerEndpoint(value = "/chat/{roomName}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
 public class ChatServerEndpoint {
+
+    private final static Logger log = Logger.getLogger(ChatServerEndpoint.class.getSimpleName());
+
 
     public static final Map<String, Room> rooms = Collections.synchronizedMap(new HashMap<String, Room>());
 
@@ -47,15 +52,18 @@ public class ChatServerEndpoint {
     }
 
     @OnOpen
-    public void onOpen(final Session session, @PathParam("roomName") final String roomName) {
+    public void onOpen(final Session session, @PathParam("roomName") final String roomName, EndpointConfig conf) throws IOException, EncodeException {
 
-        Room room = rooms.get(roomName);
+        // Set session level configurations
         session.getUserProperties().putIfAbsent("roomName", roomName);
-
         session.setMaxIdleTimeout(5 * 60 * 1000); // Timeouts after 5 minutes
 
+        // Store session
+        Room room = rooms.get(roomName);
         room.join(session);
-        room.sendMessage(objectify(WELCOME_MESSAGE));
+
+        // Send welcome message
+        session.getBasicRemote().sendObject(objectify(WELCOME_MESSAGE));
     }
 
     @OnMessage
@@ -67,9 +75,27 @@ public class ChatServerEndpoint {
         messageReceived.fire(new MessageEvent(message, session));
     }
 
+    @OnMessage
+    public void onBinaryMessage(ByteBuffer message, Session session) {
+
+    }
+
+    @OnMessage
+    public void onPongMessage(PongMessage message, Session session) {
+
+    }
+
     @OnClose
-    public void onClose(Session session) throws IOException, EncodeException {
+    public void onClose(Session session, CloseReason reason) throws IOException, EncodeException {
+        log.info(reason::getReasonPhrase);
         rooms.get(extractRoomFrom(session)).leave(session);
+    }
+
+    @OnError
+    public void onError(Session session, Throwable error) {
+        log.info(error::getMessage);
+
+        // implement error handling
     }
 
     private String extractRoomFrom(Session session) {

@@ -24,7 +24,7 @@ public class Messages {
     }
 
     public static Message objectify(String content, String... args){
-        return objectify(content, "Chat Bot", Calendar.getInstance().getTime(), args);
+        return objectify(content, "Duke Bot", Calendar.getInstance().getTime(), args);
     }
 
     public static Message objectify(String content, String sender, String... args){
