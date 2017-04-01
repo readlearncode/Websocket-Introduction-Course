@@ -12,12 +12,7 @@ import java.util.Scanner;
  */
 public class ChatClient {
 
-    private static final String SERVER = "ws://localhost:8090/pico/chat";
-
     public static void main(String[] args) throws Exception {
-
-        // Create client
-        ClientManager client = ClientManager.createClient();
 
         // Greeting message
         Scanner scanner = new Scanner(System.in);
@@ -25,8 +20,11 @@ public class ChatClient {
         System.out.println("Enter your name?");
         String user = scanner.nextLine();
 
-        // Create connection to server
-        Session session = client.connectToServer(ClientEndpointExample.class, new URI(SERVER));
+        // Create client
+        ClientManager client = ClientManager.createClient();
+
+        // Create connection between client to server
+        Session session = client.connectToServer(ClientEndpointExample.class, new URI("ws://localhost:8090/pico/chat"));
         System.out.println("Welcome: " + user);
 
         String message;
