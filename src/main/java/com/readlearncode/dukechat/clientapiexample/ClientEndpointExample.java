@@ -1,4 +1,4 @@
-package com.readlearncode.dukechat.client;
+package com.readlearncode.dukechat.clientapiexample;
 
 import javax.websocket.ClientEndpoint;
 import javax.websocket.OnMessage;

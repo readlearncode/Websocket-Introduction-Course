@@ -1,4 +1,4 @@
-package com.readlearncode.dukechat.client;
+package com.readlearncode.dukechat.clientapiexample;
 
 import org.glassfish.tyrus.client.ClientManager;
 
@@ -16,7 +16,7 @@ public class ChatClient {
 
     public static void main(String[] args) throws Exception {
 
-        // Create client
+        // Create clientapiexample
         ClientManager client = ClientManager.createClient();
 
         // Greeting message

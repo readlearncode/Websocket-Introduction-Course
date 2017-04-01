@@ -1,6 +1,5 @@
-package com.readlearncode.dukechat.client;
+package com.readlearncode.dukechat.clientapiexample;
 
-import com.readlearncode.dukechat.application.ServerEndpointExample;
 import org.glassfish.tyrus.server.Server;
 
 import javax.websocket.DeploymentException;
