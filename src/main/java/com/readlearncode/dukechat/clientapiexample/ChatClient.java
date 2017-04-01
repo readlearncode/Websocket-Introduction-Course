@@ -16,7 +16,7 @@ public class ChatClient {
 
     public static void main(String[] args) throws Exception {
 
-        // Create clientapiexample
+        // Create client
         ClientManager client = ClientManager.createClient();
 
         // Greeting message

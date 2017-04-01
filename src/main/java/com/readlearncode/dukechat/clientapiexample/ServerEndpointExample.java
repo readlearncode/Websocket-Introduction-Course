@@ -21,7 +21,7 @@ public class ServerEndpointExample {
     @OnOpen
     public void onOpen(Session session) throws IOException, EncodeException {
 
-        // Add new clientapiexample to the list of clients
+        // Add new client to the list of clients
         clients.add(session);
 
         // Broadcast that user has entered the room
@@ -50,7 +50,7 @@ public class ServerEndpointExample {
     @OnClose
     public void onClose(Session session) throws IOException, EncodeException {
 
-        // Remove clientapiexample from clientapiexample list
+        // Remove client from client list
         clients.remove(session);
 
     }
