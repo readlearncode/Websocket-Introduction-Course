@@ -34,7 +34,7 @@ public class Room implements Function<String, Room> {
     }
 
     public synchronized void leave(Session session) {
-        sendMessage(new Message("Duke Bot", format("%s has left the room", (String) session.getUserProperties().get("userName"))));
+        sendMessage(new Message("Duke Bot", format("%s left the chat room", (String) session.getUserProperties().get("userName"))));
         sessions.remove(session);
     }
 
