@@ -6,6 +6,7 @@ import javax.json.Json;
 import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
+import java.time.LocalDate;
 
 /**
  * @author Alex Theedom
@@ -18,17 +19,17 @@ public class MessageEncoder implements Encoder.Text<Message> {
         return Json.createObjectBuilder()
                 .add("content", message.getContent())
                 .add("sender", message.getSender())
-                .add("received", "")
+                .add("received", LocalDate.now().toString())
                 .build().toString();
     }
 
     @Override
     public void init(EndpointConfig config) {
-        // not implemented
+        // Not implemented
     }
 
     @Override
     public void destroy() {
-        // not implemented
+        // Not implemented
     }
 }
