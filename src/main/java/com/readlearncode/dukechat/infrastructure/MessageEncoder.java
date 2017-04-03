@@ -2,6 +2,7 @@ package com.readlearncode.dukechat.infrastructure;
 
 import com.readlearncode.dukechat.domain.Message;
 
+import javax.json.Json;
 import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
@@ -14,8 +15,11 @@ public class MessageEncoder implements Encoder.Text<Message> {
 
     @Override
     public String encode(final Message message) throws EncodeException {
-        // Implement code that encodes the Message object and returns a JSON String representation
-        return "";
+        return Json.createObjectBuilder()
+                .add("content", message.getContent())
+                .add("sender", message.getSender())
+                .add("received", "")
+                .build().toString();
     }
 
     @Override
