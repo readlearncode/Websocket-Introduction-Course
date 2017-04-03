@@ -2,9 +2,11 @@ package com.readlearncode.dukechat.infrastructure;
 
 import com.readlearncode.dukechat.domain.Message;
 
+import javax.json.Json;
 import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
+import java.time.LocalDate;
 
 /**
  * @author Alex Theedom
@@ -14,8 +16,11 @@ public class MessageEncoder implements Encoder.Text<Message> {
 
     @Override
     public String encode(final Message message) throws EncodeException {
-        // TODO: Implement code that encodes the Message object and returns a JSON String representation
-        return "";
+        return Json.createObjectBuilder()
+                .add("content", message.getContent())
+                .add("sender", message.getSender())
+                .add("received", LocalDate.now().toString())
+                .build().toString();
     }
 
     @Override
@@ -25,6 +30,7 @@ public class MessageEncoder implements Encoder.Text<Message> {
 
     @Override
     public void destroy() {
+        // Not implemented
         // not implemented
     }
 }
