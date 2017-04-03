@@ -5,9 +5,6 @@ import com.readlearncode.dukechat.utils.Messages;
 
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -17,23 +14,16 @@ import java.util.logging.Logger;
  * @version 1.0
  */
 @Stateless
-public class DukeBotSchedular {
+class DukeBotSchedular {
 
     private static final Logger logger = Logger.getLogger(DukeBotSchedular.class.getName());
 
-    private Map<String, String> triggers = Collections.unmodifiableMap(createTriggers());
-
-    private Map<String, String> createTriggers() {
-        Map<String, String> triggers = new HashMap<>();
-        triggers.put("coffee", "Coffee is a programmers fuel");
-        triggers.put("duke", "I hear you talking about me");
-        return triggers;
-    }
-
     @Schedule(minute = "*/1", hour = "*")
     private void interrupt() {
-        ChatServerEndpoint.rooms.forEach((s, room) -> room.sendMessage(Messages.objectify("Hello from Duke Bot")));
+        ChatServerEndpoint.getRooms().forEach((s, room) -> room.sendMessage(Messages.objectify("Hello from Duke Bot")));
     }
+
+    // TODO: send random message from selection of messages.
 
 
 }
