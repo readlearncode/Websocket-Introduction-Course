@@ -2,7 +2,7 @@
  * Created by readlearncode.com on 29/11/2016.
  */
 var wsocket;
-var serviceLocation = "ws://localhost:8080/java-chat/chat/";
+var serviceLocation = "ws://localhost:8080/dukechat/chat/";
 var $nickName;
 var $message;
 var $chatWindow;
@@ -34,14 +34,17 @@ function connectToChatserver() {
     // wsocket = new WebSocket(serviceLocation + "/?sender=" +  encodeURI(nickName));
     wsocket.onerror = onConnectionError;
     wsocket.onmessage = onMessageReceived;
+    wsocket.onclose = onConnectionClose;
 }
 
 function onConnectionError(evt) {
-
     var msg = evt; // native API
     var $messageLine = $(evt);
     $chatWindow.append($messageLine);
+}
 
+function onConnectionClose(evt) {
+    // implement close code
 }
 
 function leaveRoom() {
@@ -52,7 +55,16 @@ function leaveRoom() {
     $nickName.focus();
 }
 
+function checkBrowserSupport() {
+    if (!window.WebSocket) {
+        alert("WebSocket is not supported.");
+    }
+}
+
 $(document).ready(function () {
+
+    checkBrowserSupport();
+
     $nickName = $('#nickname');
     $message = $('#message');
     $chatWindow = $('#response');

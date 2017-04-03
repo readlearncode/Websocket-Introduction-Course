@@ -56,7 +56,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Standalone client/server -->
+        <!-- Standalone clientapiexample/server -->
         <dependency>
             <groupId>org.glassfish.tyrus</groupId>
             <artifactId>tyrus-server</artifactId>
