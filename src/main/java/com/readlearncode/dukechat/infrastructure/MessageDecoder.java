@@ -8,7 +8,7 @@ import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
 import java.io.StringReader;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * @author Alex Theedom
@@ -22,7 +22,7 @@ public class MessageDecoder implements Decoder.Text<Message> {
         JsonObject jsonObject = Json.createReader(new StringReader(textMessage)).readObject();
         message.setContent(jsonObject.getString("content"));
         message.setSender(jsonObject.getString("sender"));
-        message.setReceived(new Date());
+        message.setReceived(LocalDate.parse(jsonObject.getString("date")));
         return message;
     }
 
@@ -33,11 +33,11 @@ public class MessageDecoder implements Decoder.Text<Message> {
 
     @Override
     public void init(EndpointConfig config) {
-
+        // Not implemented
     }
 
     @Override
     public void destroy() {
-
+        // Not implemented
     }
 }
