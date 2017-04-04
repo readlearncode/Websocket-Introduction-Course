@@ -20,9 +20,16 @@
             <url-pattern>/rooms/*</url-pattern>
             <http-method>GET</http-method>
         </web-resource-collection>
+
+        <!-- user role authentication -->
         <auth-constraint>
             <role-name>user-role</role-name>
         </auth-constraint>
+
+        <!-- https -->
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
 
     <login-config>
