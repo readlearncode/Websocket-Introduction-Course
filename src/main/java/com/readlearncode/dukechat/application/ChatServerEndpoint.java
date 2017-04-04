@@ -11,11 +11,9 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-import javax.ws.rs.core.Context;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -43,9 +41,6 @@ public class ChatServerEndpoint {
     @Inject
     @MessageReceived
     private Event<MessageEvent> messageReceived;
-
-    @Context
-    private HttpServletRequest httpRequest;
 
     @PostConstruct
     public void initialise() {
