@@ -25,23 +25,21 @@
                         &#160;&#160;
                     <a href="#{request.contextPath}" style="text-decoration: none;color:white;">
                             <img alt="" src="../images/duke.gif" style="padding-top: 10px;" height="30"/>&#160;&#160;
-                            <h:outputText styleClass="titleText" value="Java EE Chat"/>
-                            <nospan style="font-size:.85em">&nbsp;- Powered by Java Enterprize Edition 7</nospan>
+                            <h:outputText styleClass="titleText" value="Duke Chat"/>
+                            <nospan style="font-size:.85em">&nbsp;- Powered by Java Enterprize Edition</nospan>
                         </a></div>
 
                     <div class="ui-grid-col-5 alignRight" style="padding-top: 26px;">
                         <h:form>
-                            <h:commandLink value="Logout" action="/admin/logout.xhtml" styleClass="headerLink"/>
+                            <h:commandLink value="Logout" action="#{userSession.logout}" styleClass="headerLink"/>
                             &nbsp;&nbsp;
                             <h:link target="_blank" value="Source Code"
                                     action="https://github.com/readlearncode/Websocket-Introduction-Course"
                                     styleClass="headerLink"/>
                             &nbsp;&nbsp;
                             <h:link target="_blank" value="Tweeter"
-                                    action="https://github.com/readlearncode/Websocket-Introduction-Course"
+                                    action="https://twitter.com/readlearncode"
                                     styleClass="headerLink"/>
-                            &nbsp;&nbsp;
-                            <h:commandLink value="About" action="/admin/about.xhtml" styleClass="headerLink"/>
                             &nbsp;&nbsp;
                         </h:form>
                     </div>

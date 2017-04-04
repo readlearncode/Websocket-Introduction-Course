@@ -187,6 +187,14 @@
                                     </properties>
                                 </deployable>
                             </deployables>
+
+                            <configuration>
+                                <properties>
+                                    <!-- https://codehaus-cargo.github.io/cargo/Configuration+properties.html -->
+                                    <cargo.servlet.users>username:password:user-role</cargo.servlet.users>
+                                </properties>
+                            </configuration>
+
                         </configuration>
                     </plugin>
                 </plugins>
