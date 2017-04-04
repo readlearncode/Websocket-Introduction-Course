@@ -16,7 +16,7 @@
     <!-- Security configuration -->
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>WebSocket Endpoint</web-resource-name>
+            <web-resource-name>Chat Endpoint</web-resource-name>
             <url-pattern>/rooms/*</url-pattern>
             <http-method>GET</http-method>
         </web-resource-collection>
