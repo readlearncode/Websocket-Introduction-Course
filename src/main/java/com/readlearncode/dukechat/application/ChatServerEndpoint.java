@@ -35,7 +35,7 @@ public class ChatServerEndpoint {
     public void onOpen(final Session session,
                        @PathParam("roomName") final String roomName,
                        @PathParam("userName") final String userName )  {
-        // Implement open session logic
+        // Implement open session logic.
     }
 
     @OnMessage
