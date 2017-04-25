@@ -58,7 +58,7 @@ public class ChatServerEndpoint {
 
     @OnMessage
     public void onMessage(Session session, Message message)  {
-        // Implement message receive logic
+        rooms.get(extractRoomFrom(session)).sendMessage(message);
     }
 
     @OnMessage
