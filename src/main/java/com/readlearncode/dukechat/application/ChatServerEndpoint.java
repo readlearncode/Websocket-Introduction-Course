@@ -58,7 +58,7 @@ public class ChatServerEndpoint {
 
     @OnMessage
     public void onMessage(Session session, Message message)  {
-        // Implement message receive logic
+        rooms.get(extractRoomFrom(session)).sendMessage(message);
     }
 
     @OnMessage
@@ -72,13 +72,14 @@ public class ChatServerEndpoint {
     }
 
     @OnClose
-    public void onClose(Session session, CloseReason reason)  {
-        // Implement close session logic
+    public void onClose(Session session, CloseReason reason) throws IOException, EncodeException {
+        log.info(reason::getReasonPhrase);
+        rooms.get(extractRoomFrom(session)).leave(session);
     }
 
     @OnError
     public void onError(Session session, Throwable error) {
-        // Implement error logic
+        log.info(error::getMessage);
     }
 
     /**
