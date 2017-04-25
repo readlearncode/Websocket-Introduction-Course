@@ -9,11 +9,16 @@ import javax.annotation.PostConstruct;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
+
+import static com.readlearncode.dukechat.utils.Messages.WELCOME_MESSAGE;
+import static com.readlearncode.dukechat.utils.Messages.objectify;
 
 /**
  * @author Alex Theedom www.readlearncode.com
@@ -21,6 +26,8 @@ import java.util.Map;
  */
 @ServerEndpoint(value = "/chat/{roomName}/{userName}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
 public class ChatServerEndpoint {
+
+    private final static Logger log = Logger.getLogger(ChatServerEndpoint.class.getSimpleName());
 
     private static final Map<String, Room> rooms = Collections.synchronizedMap(new HashMap<String, Room>());
 
@@ -32,10 +39,21 @@ public class ChatServerEndpoint {
     }
 
     @OnOpen
-    public void onOpen(final Session session,
-                       @PathParam("roomName") final String roomName,
-                       @PathParam("userName") final String userName )  {
-        // Implement open session logic
+    public void onOpen(final Session session, @PathParam("roomName") final String roomName, @PathParam("userName") final String userName,EndpointConfig conf) throws IOException, EncodeException {
+
+        // Set session level configurations
+        session.getUserProperties().putIfAbsent("roomName", roomName);
+        session.getUserProperties().putIfAbsent("userName", userName);
+
+        // Timeouts after 5 minutes
+        session.setMaxIdleTimeout(5 * 60 * 1000);
+
+        // Store session in room
+        Room room = rooms.get(roomName);
+        room.join(session);
+
+        // Send welcome message
+        session.getBasicRemote().sendObject(objectify(WELCOME_MESSAGE));
     }
 
     @OnMessage
@@ -54,13 +72,15 @@ public class ChatServerEndpoint {
     }
 
     @OnClose
-    public void onClose(Session session, CloseReason reason)  {
-        // Implement close session logic
+    public void onClose(Session session, CloseReason reason) throws IOException, EncodeException {
+        log.info(reason::getReasonPhrase);
+        rooms.get(extractRoomFrom(session)).leave(session);
     }
 
     @OnError
     public void onError(Session session, Throwable error) {
-        // Implement error logic
+        log.info(error::getMessage);
+        // implement error handling
     }
 
     /**
