@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * @author Alex Theedom www.readlearncode.com
@@ -21,6 +22,8 @@ import java.util.Map;
  */
 @ServerEndpoint(value = "/chat/{roomName}/{userName}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
 public class ChatServerEndpoint {
+
+    private final static Logger log = Logger.getLogger(ChatServerEndpoint.class.getSimpleName());
 
     private static final Map<String, Room> rooms = Collections.synchronizedMap(new HashMap<String, Room>());
 
