@@ -9,7 +9,7 @@ import javax.websocket.OnMessage;
 import java.text.SimpleDateFormat;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 @ClientEndpoint(encoders = MessageEncoder.class, decoders = MessageDecoder.class)

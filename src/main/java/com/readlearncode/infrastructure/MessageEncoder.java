@@ -8,7 +8,7 @@ import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 public class MessageEncoder implements Encoder.Text<Message> {

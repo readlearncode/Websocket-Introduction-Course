@@ -11,7 +11,7 @@ import java.io.StringReader;
 import java.util.Date;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 public class MessageDecoder implements Decoder.Text<Message> {

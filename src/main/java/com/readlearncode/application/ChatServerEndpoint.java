@@ -15,7 +15,7 @@ import java.util.Set;
 import static java.lang.String.format;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 @ServerEndpoint(value = "/chat", encoders = MessageEncoder.class, decoders = MessageDecoder.class)

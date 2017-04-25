@@ -9,7 +9,7 @@ import java.util.Scanner;
 import static com.readlearncode.infrastructure.JsonUtil.formatMessage;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 public class Client {

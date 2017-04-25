@@ -5,7 +5,7 @@ import javax.websocket.DeploymentException;
 import java.util.Scanner;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 public class ChatServer {
