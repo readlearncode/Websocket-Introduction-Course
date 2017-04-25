@@ -80,7 +80,6 @@ public class ChatServerEndpoint {
     @OnError
     public void onError(Session session, Throwable error) {
         log.info(error::getMessage);
-        // implement error handling
     }
 
     /**
