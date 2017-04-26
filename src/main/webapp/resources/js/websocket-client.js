@@ -28,7 +28,7 @@ $(document).ready(function () {
         // Connect to chat server
         connectToChatServer();
 
-        $('.chat-wrapper h2').text(user + ", you are in " + room + ".");
+        $('.chat-wrapper h2').html("Welcome " + user + "! <br/>You are in the " + room + " chat room.");
         $('.chat-signin').hide();
         $('.chat-wrapper').show();
         $message.focus();
@@ -83,9 +83,9 @@ function leaveRoom() {
 }
 
 function constructHTMLSnippet(nickName, content, received) {
-    return $('<tr><td class="received">' + received
-        + '</td><td class="user label label-info">' + nickName
-        + '</td><td class="message badge">' + content
+    return $('<tr><td class="received">' + received.substring(0, 8)
+        + '</td><td class="user">' + nickName
+        + '</td><td class="message">' + content
         + '</td></tr>');
 }
 
