@@ -32,19 +32,6 @@
         </repository>
     </repositories>
 
-    <dependencyManagement>
-        <!-- Arquillian BOM used to reduce collision between testing dependecies. -->
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>${arquillian-bom.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
 
         <dependency>
@@ -85,27 +72,6 @@
             <groupId>org.primefaces.themes</groupId>
             <artifactId>ui-lightness</artifactId>
             <version>${ui-lightness.version}</version>
-        </dependency>
-
-        <!-- Test dependencies -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Resolvers are needed in the Arquillian tests -->
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -202,39 +168,5 @@
         </profile>
 
     </profiles>
-
-
-    <!--<plugins>-->
-    <!--<plugin>-->
-    <!--<groupId>org.apache.maven.plugins</groupId>-->
-    <!--<artifactId>maven-compiler-plugin</artifactId>-->
-    <!--<version>3.1</version>-->
-    <!--<configuration>-->
-    <!--<compilerVersion>${java.version}</compilerVersion>-->
-    <!--<source>${java.version}</source>-->
-    <!--<target>${java.version}</target>-->
-    <!--</configuration>-->
-    <!--</plugin>-->
-    <!--<plugin>-->
-    <!--<groupId>org.apache.maven.plugins</groupId>-->
-    <!--<artifactId>maven-dependency-plugin</artifactId>-->
-    <!--<executions>-->
-    <!--<execution>-->
-    <!--<id>copy-dependencies</id>-->
-    <!--<phase>prepare-package</phase>-->
-    <!--<goals>-->
-    <!--<goal>copy-dependencies</goal>-->
-    <!--</goals>-->
-    <!--<configuration>-->
-    <!--<outputDirectory>${project.build.directory}/lib</outputDirectory>-->
-    <!--<overWriteReleases>true</overWriteReleases>-->
-    <!--<overWriteSnapshots>true</overWriteSnapshots>-->
-    <!--<overWriteIfNewer>true</overWriteIfNewer>-->
-    <!--</configuration>-->
-    <!--</execution>-->
-    <!--</executions>-->
-    <!--</plugin>-->
-    <!--</plugins>-->
-
 
 </project>

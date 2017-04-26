@@ -1,16 +1,11 @@
 package com.readlearncode.dukechat.application;
 
 import com.readlearncode.dukechat.domain.Message;
-import com.readlearncode.dukechat.domain.MessageEvent;
 import com.readlearncode.dukechat.domain.Room;
 import com.readlearncode.dukechat.infrastructure.MessageDecoder;
 import com.readlearncode.dukechat.infrastructure.MessageEncoder;
-import com.readlearncode.dukechat.infrastructure.cdi.MessageReceived;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
@@ -26,7 +21,7 @@ import static com.readlearncode.dukechat.utils.Messages.WELCOME_MESSAGE;
 import static com.readlearncode.dukechat.utils.Messages.objectify;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 @ServerEndpoint(value = "/chat/{roomName}/{userName}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
@@ -37,10 +32,6 @@ public class ChatServerEndpoint {
     private static final Map<String, Room> rooms = Collections.synchronizedMap(new HashMap<String, Room>());
 
     private static final String[] roomNames = {"Java EE 7", "Java SE 8", "Websockets", "JSON"};
-
-    @Inject
-    @MessageReceived
-    private Event<MessageEvent> messageReceived;
 
     @PostConstruct
     public void initialise() {
@@ -68,7 +59,6 @@ public class ChatServerEndpoint {
     @OnMessage
     public void onMessage(Session session, Message message) throws IOException, EncodeException {
         rooms.get(extractRoomFrom(session)).sendMessage(message);
-        messageReceived.fire(new MessageEvent(message, session));
     }
 
     @OnMessage
@@ -82,7 +72,7 @@ public class ChatServerEndpoint {
     }
 
     @OnClose
-    public void onClose(Session session, CloseReason reason) throws IOException, EncodeException, ServletException {
+    public void onClose(Session session, CloseReason reason) throws IOException, EncodeException {
         log.info(reason::getReasonPhrase);
         rooms.get(extractRoomFrom(session)).leave(session);
     }
@@ -93,10 +83,20 @@ public class ChatServerEndpoint {
         // implement error handling
     }
 
+    /**
+     * Extracts the room from the session
+     *
+     * @param session the session object
+     * @return the room name
+     */
     private String extractRoomFrom(Session session) {
         return ((String) session.getUserProperties().get("roomName"));
     }
 
+    /**
+     * Returns the list of rooms in chat application
+     * @return Map of room names to room instances
+     */
     static Map<String, Room> getRooms() {
         return rooms;
     }
