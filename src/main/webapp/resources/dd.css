@@ -42,6 +42,11 @@
     margin: 0px auto;
 }
 
+. container{
+  width: 500px;
+    border: thin;
+}
+
 .large {
     vertical-align: top;
 }
