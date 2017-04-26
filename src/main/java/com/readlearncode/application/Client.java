@@ -14,9 +14,9 @@ public class Client {
 
         // Start welcome code
         String message;
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Tiny Chat!");
         System.out.println("What's your name?");
+        Scanner scanner = new Scanner(System.in);
         String user = scanner.nextLine();
         // End welcome code
 
