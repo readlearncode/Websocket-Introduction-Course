@@ -4,6 +4,7 @@ import com.readlearncode.dukechat.domain.Message;
 
 import javax.json.Json;
 import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
@@ -18,7 +19,8 @@ public class MessageDecoder implements Decoder.Text<Message> {
 
     @Override
     public Message decode(final String textMessage) throws DecodeException {
-        JsonObject jsonObject = Json.createReader(new StringReader(textMessage)).readObject();
+        JsonReader jsonReader = Json.createReader(new StringReader(textMessage));
+        JsonObject jsonObject = jsonReader.readObject();
         Message message = new Message();
         message.setContent(jsonObject.getString("content"));
         message.setSender(jsonObject.getString("sender"));
