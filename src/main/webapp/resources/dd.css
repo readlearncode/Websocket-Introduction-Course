@@ -59,6 +59,11 @@
     padding-right: 5px;
 }
 
+. container{
+  width: 500px;
+    border: thin;
+}
+
 .large {
     vertical-align: top;
 }
