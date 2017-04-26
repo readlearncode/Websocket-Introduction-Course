@@ -10,8 +10,6 @@ import java.util.function.Function;
 import static java.lang.String.format;
 
 /**
- * Source code github.com/readlearncode
- *
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
