@@ -38,6 +38,6 @@ public class MessageDecoder implements Decoder.Text<Message> {
 
     @Override
     public void destroy() {
-
+        // Not implemented
     }
 }

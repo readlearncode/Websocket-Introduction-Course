@@ -25,12 +25,11 @@ public class MessageEncoder implements Encoder.Text<Message> {
 
     @Override
     public void init(EndpointConfig config) {
-        // not implemented
+        // Not implemented
     }
 
     @Override
     public void destroy() {
         // Not implemented
-        // not implemented
     }
 }
