@@ -15,7 +15,7 @@ public class MessageDecoder implements Decoder.Text<Message> {
     @Override
     public Message decode(final String textMessage) throws DecodeException {
         Message message = new Message();
-        // Implement code the decodes the text message String and returns a Message object
+        // TODO: Implement code the decodes the text message String and returns a Message object
         return message;
     }
 

@@ -14,7 +14,7 @@ public class MessageEncoder implements Encoder.Text<Message> {
 
     @Override
     public String encode(final Message message) throws EncodeException {
-        // Implement code that encodes the Message object and returns a JSON String representation
+        // TODO: Implement code that encodes the Message object and returns a JSON String representation
         return "";
     }
 
