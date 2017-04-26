@@ -1,6 +1,12 @@
 package com.readlearncode.application;
 
+import org.glassfish.tyrus.client.ClientManager;
+
+import javax.websocket.Session;
+import java.net.URI;
 import java.util.Scanner;
+
+import static com.readlearncode.infrastructure.JsonUtil.formatMessage;
 
 /**
  * @author Alex Theedom www.readlearncode.com
@@ -10,7 +16,7 @@ public class Client {
 
     public static void main(String[] args) throws Exception {
 
-        // TODO: Create the client instance
+        ClientManager client = ClientManager.createClient();
 
         // Start welcome code
         String message;
@@ -20,14 +26,16 @@ public class Client {
         String user = scanner.nextLine();
         // End welcome code
 
-        // TODO: Connect to the server endpoint
+        Session session = client.connectToServer(
+                ChatClientEndpoint.class,
+                new URI("ws://localhost:8025/ws/chat"));
 
         System.out.println("You are logged in as: " + user);
 
         do {
             // repeatedly read a message and send it to the server (until quit)
             message = scanner.nextLine();
-            // TODO: Send message to server endpoint
+            session.getBasicRemote().sendText(formatMessage(message, user));
         } while (!message.equalsIgnoreCase("quit"));
     }
 
