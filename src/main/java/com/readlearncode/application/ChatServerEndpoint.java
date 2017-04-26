@@ -21,7 +21,7 @@ import static java.lang.String.format;
 @ServerEndpoint(value = "/chat", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
 public class ChatServerEndpoint {
 
-    static Set<Session> peers = Collections.synchronizedSet(new HashSet<Session>());
+    private static Set<Session> peers = Collections.synchronizedSet(new HashSet<Session>());
 
     @OnOpen
     public void onOpen(Session session) {
