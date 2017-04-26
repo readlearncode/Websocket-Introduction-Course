@@ -39,6 +39,15 @@ public class Room implements Function<String, Room> {
     }
 
     public synchronized void sendMessage(Message message) {
+
+        System.out.println("enter message ");
+
+        System.out.println("sessions " + sessions.size());
+
+        System.out.println("message " + message);
+        System.out.println("after ");
+        System.out.println("sessions " + sessions);
+
         sessions.parallelStream()
                 .filter(Session::isOpen)
                 .forEach(session -> sendMessage(message, session));
@@ -46,6 +55,10 @@ public class Room implements Function<String, Room> {
 
 
     private void sendMessage(Message message, Session session) {
+        System.out.println("sendMessage ");
+
+        System.out.println("session " + session);
+
         try {
             session.getBasicRemote().sendObject(message);
         } catch (IOException e) {

@@ -64,4 +64,13 @@ public class Message {
     public int hashCode() {
         return Objects.hash(content, sender, received);
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "content='" + content + '\'' +
+                ", sender='" + sender + '\'' +
+                ", received='" + received + '\'' +
+                '}';
+    }
 }
