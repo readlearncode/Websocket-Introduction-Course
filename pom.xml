@@ -15,10 +15,7 @@
         <javax.websocket-api.version>1.1</javax.websocket-api.version>
         <tyrus.version>1.1</tyrus.version>
         <javax.json.version>1.0.4</javax.json.version>
-        <java.version>1.8</java.version>
-        <arquillian-bom.version>1.1.11.Final</arquillian-bom.version>
         <javaee-api.version>7.0</javaee-api.version>
-        <junit.version>4.12</junit.version>
         <tyrus-server.version>1.13.1</tyrus-server.version>
     </properties>
 
@@ -32,7 +29,6 @@
         </repository>
     </repositories>
 
-
     <dependencies>
 
         <dependency>
@@ -42,7 +38,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Standalone client/server -->
+        <!-- Standalone clientapiexample/server -->
         <dependency>
             <groupId>org.glassfish.tyrus</groupId>
             <artifactId>tyrus-server</artifactId>
@@ -123,14 +119,6 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>org.jboss.arquillian.container</groupId>
-                    <artifactId>arquillian-glassfish-remote-3.1</artifactId>
-                    <version>1.0.0.CR4</version>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
             <build>
                 <plugins>
                     <plugin>
@@ -155,12 +143,11 @@
                                 </deployable>
                             </deployables>
 
-                            <configuration>
-                                <properties>
-                                    <!-- https://codehaus-cargo.github.io/cargo/Configuration+properties.html -->
-                                    <cargo.servlet.users>username:password:user-role</cargo.servlet.users>
-                                </properties>
-                            </configuration>
+                            <!--<configuration>-->
+                                <!--<properties>-->
+                                    <!--<cargo.servlet.users>username:password:user-role</cargo.servlet.users>-->
+                                <!--</properties>-->
+                            <!--</configuration>-->
 
                         </configuration>
                     </plugin>
@@ -169,5 +156,6 @@
         </profile>
 
     </profiles>
+
 
 </project>
