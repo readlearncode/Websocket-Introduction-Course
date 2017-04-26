@@ -2,9 +2,13 @@ package com.readlearncode.dukechat.infrastructure;
 
 import com.readlearncode.dukechat.domain.Message;
 
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
+import java.io.StringReader;
+import java.time.LocalTime;
 
 /**
  * @author Alex Theedom www.readlearncode.com
@@ -14,8 +18,11 @@ public class MessageDecoder implements Decoder.Text<Message> {
 
     @Override
     public Message decode(final String textMessage) throws DecodeException {
+        JsonObject jsonObject = Json.createReader(new StringReader(textMessage)).readObject();
         Message message = new Message();
-        // TODO: Implement code the decodes the text message String and returns a Message object
+        message.setContent(jsonObject.getString("content"));
+        message.setSender(jsonObject.getString("sender"));
+        message.setReceived(LocalTime.now().toString());
         return message;
     }
 
