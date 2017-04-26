@@ -1,27 +1,26 @@
 package com.readlearncode.dukechat.domain;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalTime;
 import java.util.Objects;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 public class Message {
 
     private String content;
     private String sender;
-    private Date received;
+    private String received;
 
     public Message() {
     }
 
     public Message(String content, String sender) {
-        this(content, sender, Calendar.getInstance().getTime());
+        this(content, sender, LocalTime.now().toString());
     }
 
-    public Message(String content, String sender, Date received) {
+    public Message(String content, String sender, String received) {
         this.content = content;
         this.sender = sender;
         this.received = received;
@@ -43,11 +42,11 @@ public class Message {
         this.sender = sender;
     }
 
-    public Date getReceived() {
+    public String getReceived() {
         return received;
     }
 
-    public void setReceived(Date received) {
+    public void setReceived(String received) {
         this.received = received;
     }
 

@@ -10,8 +10,6 @@ import java.util.function.Function;
 import static java.lang.String.format;
 
 /**
- * Source code github.com/readlearncode
- *
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
@@ -34,7 +32,7 @@ public class Room implements Function<String, Room> {
     }
 
     public synchronized void leave(Session session) {
-        sendMessage(new Message("Duke Bot", format("%s left the chat room", (String) session.getUserProperties().get("user"))));
+        sendMessage(new Message("Duke Bot", format("%s left the chat room", (String) session.getUserProperties().get("userName"))));
         sessions.remove(session);
     }
 

@@ -2,8 +2,7 @@ package com.readlearncode.dukechat.utils;
 
 import com.readlearncode.dukechat.domain.Message;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalTime;
 
 import static java.lang.String.format;
 
@@ -24,14 +23,14 @@ public class Messages {
     }
 
     public static Message objectify(String content, String... args){
-        return objectify(content, "Duke Bot", Calendar.getInstance().getTime(), args);
+        return objectify(content, "Duke Bot", LocalTime.now().toString(), args);
     }
 
     public static Message objectify(String content, String sender, String... args){
-        return objectify(content, sender, Calendar.getInstance().getTime(), args);
+        return objectify(content, sender, LocalTime.now().toString(), args);
     }
 
-    public static Message objectify(String content, String sender, Date received, String... args){
+    public static Message objectify(String content, String sender, String received, String... args){
         return new Message(personlize(content, args), sender, received);
     }
 }
