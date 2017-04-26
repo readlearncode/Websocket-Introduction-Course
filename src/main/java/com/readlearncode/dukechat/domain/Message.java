@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.Objects;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 public class Message {

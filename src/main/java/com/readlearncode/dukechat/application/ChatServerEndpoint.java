@@ -21,7 +21,7 @@ import static com.readlearncode.dukechat.utils.Messages.WELCOME_MESSAGE;
 import static com.readlearncode.dukechat.utils.Messages.objectify;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 @ServerEndpoint(value = "/chat/{roomName}/{userName}", encoders = MessageEncoder.class, decoders = MessageDecoder.class)
@@ -41,12 +41,6 @@ public class ChatServerEndpoint {
     @OnOpen
     public void onOpen(final Session session, @PathParam("roomName") final String roomName, @PathParam("userName") final String userName,EndpointConfig conf) throws IOException, EncodeException {
 
-        System.out.println("enter onOpen");
-        System.out.println("session " + session);
-        System.out.println("roomName " + roomName);
-        System.out.println("userName " + userName);
-
-
         // Set session level configurations
         session.getUserProperties().putIfAbsent("roomName", roomName);
         session.getUserProperties().putIfAbsent("userName", userName);
@@ -64,10 +58,6 @@ public class ChatServerEndpoint {
 
     @OnMessage
     public void onMessage(Session session, Message message) throws IOException, EncodeException {
-        System.out.println("enter onMessage");
-        System.out.println("session " + session);
-        System.out.println("message " + message);
-
         rooms.get(extractRoomFrom(session)).sendMessage(message);
     }
 
