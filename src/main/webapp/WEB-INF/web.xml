@@ -3,6 +3,32 @@
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+
+    <!--<security-constraint>-->
+        <!--<web-resource-collection>-->
+            <!--<web-resource-name>Chat Endpoint</web-resource-name>-->
+            <!--<url-pattern>/rooms/*</url-pattern>-->
+            <!--<http-method>GET</http-method>-->
+        <!--</web-resource-collection>-->
+
+        <!--<auth-constraint>-->
+            <!--<role-name>user-role</role-name>-->
+        <!--</auth-constraint>-->
+
+    <!--</security-constraint>-->
+
+
+    <!--<login-config>-->
+        <!--<auth-method>BASIC</auth-method>-->
+        <!--<realm-name>file</realm-name>-->
+    <!--</login-config>-->
+
+    <!--<security-role>-->
+        <!--<role-name>user-role</role-name>-->
+    <!--</security-role>-->
+
+
     <!-- Overriding system level defaults is a decent usage of XML -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
