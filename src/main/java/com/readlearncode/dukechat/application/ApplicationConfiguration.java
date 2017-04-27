@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Source code github.com/readlearncode
- *
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */

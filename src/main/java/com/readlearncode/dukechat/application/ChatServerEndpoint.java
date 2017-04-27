@@ -16,8 +16,6 @@ import static com.readlearncode.dukechat.utils.Messages.WELCOME_MESSAGE;
 import static com.readlearncode.dukechat.utils.Messages.objectify;
 
 /**
- * Source code github.com/readlearncode
- *
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
@@ -70,7 +68,6 @@ public class ChatServerEndpoint extends Endpoint {
 
     }
 
-    // Optional
     public void onClose(Session session, CloseReason reason) {
         log.info(reason::getReasonPhrase);
         rooms.get(extractRoomFrom(session)).leave(session);
@@ -78,7 +75,6 @@ public class ChatServerEndpoint extends Endpoint {
 
     public void onError(Session session, Throwable error) {
         log.info(error::getMessage);
-        // implement error handling
     }
 
     private String extractRoomFrom(Session session) {

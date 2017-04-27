@@ -8,8 +8,6 @@ import javax.ejb.Stateless;
 import java.util.logging.Logger;
 
 /**
- * Source code github.com/readlearncode
- *
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
@@ -22,8 +20,6 @@ class DukeBotSchedular {
     private void interrupt() {
         ChatServerEndpoint.getRooms().forEach((s, room) -> room.sendMessage(Messages.objectify("Hello from Duke Bot")));
     }
-
-    // TODO: send random message from selection of messages.
 
 
 }
