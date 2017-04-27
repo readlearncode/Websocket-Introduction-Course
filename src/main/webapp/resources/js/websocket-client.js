@@ -42,31 +42,23 @@ $(document).ready(function () {
     });
 });
 
+
+function connectToChatServer() {
+    // Create websocket connection to server endpoint URI
+    // TODO: Connect to endpoint
+
+    // Set message and error handlers
+    // TODO: add callback for incomming messages
+    // TODO: add callback for error events
+}
+
 function onMessageReceived(evt) {
     // Parse JSON String to JavaScript Object
-    var msg = JSON.parse(evt.data); // native API
+    // TODO: deserialise the JSON string to JavaScript object;
 
     // Construct HTML snippet and print to screen
     var $messageLine = constructHTMLSnippet(msg.sender, msg.content, msg.received);
     $chatWindow.append($messageLine);
-}
-
-function sendMessage() {
-    // Construct message to send to server
-    var msg = '{"content":"' + $message.val() + '", "sender":"' + user + '", "received":"' + '"}';
-    wsocket.send(msg);
-
-    // Put back focus
-    $message.val('').focus();
-}
-
-function connectToChatServer() {
-    // Create websocket connection to server endpoint URI
-    wsocket = new WebSocket(constructURI(serviceLocation, encodeURI(room), user));
-
-    // Set message and error handlers
-    wsocket.onerror = onConnectionError;
-    wsocket.onmessage = onMessageReceived;
 }
 
 function onConnectionError(evt) {
@@ -74,11 +66,25 @@ function onConnectionError(evt) {
     $alert.append($(evt));
 }
 
+function sendMessage() {
+    // Construct message to send to server
+    var msg = '{"content":"' + $message.val() + '", "sender":"' + user + '", "received":"' + '"}';
+    // TODO: Send message
+
+    // Put back focus
+    $message.val('').focus();
+}
+
 function leaveRoom() {
-    wsocket.close();
+    // TODO: close websocket
     $chatWindow.empty();
     $('.chat-wrapper').hide();
     $('.chat-signin').show();
+}
+
+
+function constructURI(serviceLocation, room, user) {
+    return serviceLocation + "/" + room + "/" + user;
 }
 
 function constructHTMLSnippet(nickName, content, received) {
@@ -86,8 +92,4 @@ function constructHTMLSnippet(nickName, content, received) {
         + '</td><td class="user">' + nickName
         + '</td><td class="message">' + content
         + '</td></tr>');
-}
-
-function constructURI(serviceLocation, room, user) {
-    return serviceLocation + "/" + room + "/" + user;
 }
