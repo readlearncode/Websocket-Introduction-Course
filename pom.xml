@@ -144,11 +144,11 @@
                                 </deployable>
                             </deployables>
 
-                            <!--<configuration>-->
-                                <!--<properties>-->
-                                    <!--<cargo.servlet.users>username:password:user-role</cargo.servlet.users>-->
-                                <!--</properties>-->
-                            <!--</configuration>-->
+                            <configuration>
+                                <properties>
+                                    <cargo.servlet.users>username:password:user-role</cargo.servlet.users>
+                                </properties>
+                            </configuration>
 
                         </configuration>
                     </plugin>

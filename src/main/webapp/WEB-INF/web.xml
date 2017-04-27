@@ -5,28 +5,28 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
 
-    <!--<security-constraint>-->
-        <!--<web-resource-collection>-->
-            <!--<web-resource-name>Chat Endpoint</web-resource-name>-->
-            <!--<url-pattern>/rooms/*</url-pattern>-->
-            <!--<http-method>GET</http-method>-->
-        <!--</web-resource-collection>-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Chat Endpoint</web-resource-name>
+            <url-pattern>/rooms/*</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
 
-        <!--<auth-constraint>-->
-            <!--<role-name>user-role</role-name>-->
-        <!--</auth-constraint>-->
+        <auth-constraint>
+            <role-name>user-role</role-name>
+        </auth-constraint>
 
-    <!--</security-constraint>-->
+    </security-constraint>
 
 
-    <!--<login-config>-->
-        <!--<auth-method>BASIC</auth-method>-->
-        <!--<realm-name>file</realm-name>-->
-    <!--</login-config>-->
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>file</realm-name>
+    </login-config>
 
-    <!--<security-role>-->
-        <!--<role-name>user-role</role-name>-->
-    <!--</security-role>-->
+    <security-role>
+        <role-name>user-role</role-name>
+    </security-role>
 
 
     <!-- Overriding system level defaults is a decent usage of XML -->
