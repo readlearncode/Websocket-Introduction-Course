@@ -4,16 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
-    <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
 
-    <session-config>
-        <session-timeout>60</session-timeout>
-    </session-config>
-
-    <!-- Security configuration -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Chat Endpoint</web-resource-name>
@@ -21,16 +12,16 @@
             <http-method>GET</http-method>
         </web-resource-collection>
 
-        <!-- user role authentication -->
         <auth-constraint>
             <role-name>user-role</role-name>
         </auth-constraint>
 
-        <!-- https -->
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
+
     </security-constraint>
+
 
     <login-config>
         <auth-method>BASIC</auth-method>
@@ -42,7 +33,18 @@
     </security-role>
 
 
-    <!-- Faces configurations -->
+    <!-- Overriding system level defaults is a decent usage of XML -->
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+
+    <!-- XML is still typical for third party framework configuration -->
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>ui-lightness</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -54,15 +56,13 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
-    <!-- Overriding system level defaults is a decent usage of XML -->
-    <context-param>
-        <param-name>javax.faces.PROJECT_STAGE</param-name>
-        <param-value>Development</param-value>
-    </context-param>
+    <session-config>
+        <session-timeout>12</session-timeout>
+    </session-config>
 
-    <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>ui-lightness</param-value>
-    </context-param>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>

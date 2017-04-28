@@ -16,10 +16,9 @@ class DukeBotSchedular {
 
     private static final Logger logger = Logger.getLogger(DukeBotSchedular.class.getName());
 
-    @Schedule(minute = "*/1", hour = "*")
+    @Schedule(minute = "*/20", hour = "*")
     private void interrupt() {
         ChatServerEndpoint.getRooms().forEach((s, room) -> room.sendMessage(Messages.objectify("Hello from Duke Bot")));
     }
-
 
 }
