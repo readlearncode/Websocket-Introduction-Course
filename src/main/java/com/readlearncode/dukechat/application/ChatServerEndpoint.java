@@ -1,15 +1,11 @@
 package com.readlearncode.dukechat.application;
 
 import com.readlearncode.dukechat.domain.Message;
-import com.readlearncode.dukechat.domain.MessageEvent;
 import com.readlearncode.dukechat.domain.Room;
 import com.readlearncode.dukechat.infrastructure.MessageDecoder;
 import com.readlearncode.dukechat.infrastructure.MessageEncoder;
-import com.readlearncode.dukechat.infrastructure.cdi.MessageReceived;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
@@ -37,10 +33,6 @@ public class ChatServerEndpoint {
 
     private static final String[] roomNames = {"Java EE 7", "Java SE 8", "Websockets", "JSON"};
 
-    @Inject
-    @MessageReceived
-    private Event<MessageEvent> messageReceived;
-
     @PostConstruct
     public void initialise() {
         Arrays.stream(roomNames).forEach(roomName -> rooms.computeIfAbsent(roomName, new Room(roomName)));
@@ -67,7 +59,6 @@ public class ChatServerEndpoint {
     @OnMessage
     public void onMessage(Session session, Message message) throws IOException, EncodeException {
         rooms.get(extractRoomFrom(session)).sendMessage(message);
-        messageReceived.fire(new MessageEvent(message, session));
     }
 
     @OnMessage

@@ -23,7 +23,5 @@ class DukeBotSchedular {
         ChatServerEndpoint.getRooms().forEach((s, room) -> room.sendMessage(Messages.objectify("Hello from Duke Bot")));
     }
 
-    // TODO: send random message from selection of messages.
-
 
 }
