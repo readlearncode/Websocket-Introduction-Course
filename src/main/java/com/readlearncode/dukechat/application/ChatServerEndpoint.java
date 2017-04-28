@@ -35,8 +35,6 @@ public class ChatServerEndpoint extends Endpoint {
     @Override
     public void onOpen(Session session, EndpointConfig config) {
 
-        System.out.println("onOpen " + session);
-
         // Add Message message handler
         session.addMessageHandler((MessageHandler.Whole<Message>) message ->
                 {
@@ -51,9 +49,6 @@ public class ChatServerEndpoint extends Endpoint {
         session.getUserProperties().putIfAbsent("roomName", roomName);
         session.getUserProperties().putIfAbsent("userName", userName);
         session.setMaxIdleTimeout(5 * 60 * 1000); // Timeouts after 5 minutes
-
-        System.out.println("roomName " + roomName);
-        System.out.println("userName " + userName);
 
         // Store session
         Room room = rooms.get(roomName);
