@@ -18,18 +18,17 @@ public class PingClient {
                 PingClientEndpoint.class,
                 new URI("ws://localhost:8080/ws/heartbeat"));
 
-        do {
+        // Part 1
+        Thread.sleep(10_000);
+        System.out.println("Client sending Pong");
+        session.getBasicRemote().sendPong(ByteBuffer.wrap("PONG".getBytes()));
 
-            Thread.sleep(10_000);
-            System.out.println("Client sending Pong");
-            session.getBasicRemote().sendPong(ByteBuffer.wrap("PONG".getBytes()));
+        // Part 2
+        Thread.sleep(10_000);
+        System.out.println("Client sending Ping");
+        session.getBasicRemote().sendPing(ByteBuffer.wrap("PING".getBytes()));
 
-            Thread.sleep(10_000);
-            System.out.println("Client sending Ping");
-            session.getBasicRemote().sendPing(ByteBuffer.wrap("PING".getBytes()));
-
-        } while (true);
-
+        Thread.sleep(1_000);
     }
 
 }
