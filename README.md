@@ -29,7 +29,7 @@ Source code for the chat application used in the WebSocket Programming with Java
 	2	WebSocket functionality	
 	3	Annotation methodology	
 	4	Implement WebSocket lifecycles	
-			Respository: *04_04_start*
+			Respository: **04_04_start**
 			Respository: *04_04_end*
 	5	Configure the session	
 			Respositroy: *04_05_start*
