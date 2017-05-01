@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="/WEB-INF/templates/common.xhtml">
+    <ui:define name="title">Login</ui:define>
+    <ui:define name="content">
+
+        <div class="container chat-signin centered">
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Sign In</h2>
+                <label for="nickname">Name</label>
+                <input type="text"
+                       class="input-block-level" placeholder="Enter your name"
+                       id="nickname"/>
+                    <label for="chatroom">Room</label>
+                    <select size="1" id="chatroom">
+                        <option>Java EE 7</option>
+                        <option>Java SE 8</option>
+                        <option>Websockets</option>
+                        <option>JSON</option>
+                    </select>
+                <button class="btn btn-large btn-primary" type="submit" id="enterRoom">Enter
+                </button>
+            </form>
+        </div>
+        <!-- /container -->
+
+        <div class="container chat-wrapper centered">
+            <form id="do-chat">
+                <h2 id="alert" class="alert alert-success"></h2>
+                <table id="response" class="table table-bordered"></table>
+                <br/>
+                <fieldset>
+                    <legend>Enter your message</legend>
+                    <div class="controls">
+                        <input type="text" class="input-block-level" placeholder="What do you want to say?" id="message"
+                               style="padding: 5px;width: 500px;height:60px"/><br/><br/>
+                        <input type="submit" class="btn btn-large btn-block btn-primary"
+                               value="Send Message"/>
+                        <button class="btn btn-large btn-block" type="button" id="leave-room">Exit
+                            Room
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+
+    </ui:define>
+</ui:composition>
+</html>
