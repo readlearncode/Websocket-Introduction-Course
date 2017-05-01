@@ -8,7 +8,7 @@
     <title><ui:insert name="title">Title</ui:insert></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
     <h:outputStylesheet name="dd.css"/>
     <h:outputScript name="js/websocket-client.js"/>
     <ui:debug hotkey="x"/>
@@ -21,34 +21,19 @@
             <div class="ui-grid ui-grid-responsive">
                 <div class="ui-grid-row shadowme">
 
-                    <div class="ui-grid-col-5">
+                    <div style="padding-left: 10px;">
                         &#160;&#160;
                     <a href="#{request.contextPath}" style="text-decoration: none;color:white;">
                             <img alt="" src="../images/duke.gif" style="padding-top: 10px;" height="30"/>&#160;&#160;
-                            <h:outputText styleClass="titleText" value="Java EE Chat"/>
-                            <nospan style="font-size:.85em">&nbsp;- Powered by Java Enterprize Edition 7</nospan>
+                            <h:outputText styleClass="titleText" value="Duke Chat"/>
+                        <h:outputText style="font-size:.85em" value="&nbsp;- Powered by Java Enterprise Edition 7"/>
                         </a></div>
 
-                    <div class="ui-grid-col-5 alignRight" style="padding-top: 26px;">
-                        <h:form>
-                            <h:commandLink value="Logout" action="/admin/logout.xhtml" styleClass="headerLink"/>
-                            &nbsp;&nbsp;
-                            <h:link target="_blank" value="Source Code"
-                                    action="https://github.com/readlearncode/Websocket-Introduction-Course"
-                                    styleClass="headerLink"/>
-                            &nbsp;&nbsp;
-                            <h:link target="_blank" value="Tweeter"
-                                    action="https://github.com/readlearncode/Websocket-Introduction-Course"
-                                    styleClass="headerLink"/>
-                            &nbsp;&nbsp;
-                            <h:commandLink value="About" action="/admin/about.xhtml" styleClass="headerLink"/>
-                            &nbsp;&nbsp;
-                        </h:form>
-                    </div>
-                    <div class="ui-grid-col-2 alignRight" style="padding-top: 8px;">
+
+                    <div style="padding-right: 10px; padding-top: 8px; position: absolute; right: 0;">
                         <h:form>
                             <h:outputLink target="_blank"
-                                    value="https://github.com/readlearncode/Websocket-Introduction-Course">
+                                          value="https://github.com/readlearncode">
                                 <h:graphicImage value="../images/github.png"/>
                             </h:outputLink>
                             <h:outputLink target="_blank" value="https://uk.linkedin.com/in/alextheedom">
@@ -73,10 +58,10 @@
             </div>
         </p:layoutUnit>
 
-        <p:layoutUnit position="south" size="50" style="margin: 0 auto;">
+        <p:layoutUnit position="south" size="20" style="margin: 0 auto;">
                 <p:separator/>
-                <p:outputLabel class="footerText centered">Credits: <a href="https://www.iconfinder.com/brandbundle"
-                                                          class="footerText centered">BrandBundle</a></p:outputLabel>
+                <p:outputLabel class="footerText centered"><a href="https://www.iconfinder.com/brandbundle"
+                                                          class="footerText centered">Credits: BrandBundle</a></p:outputLabel>
         </p:layoutUnit>
     </p:layout>
 </h:body>

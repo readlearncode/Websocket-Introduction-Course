@@ -40,6 +40,23 @@
 
 .centered {
     margin: 0px auto;
+    width: 500px;
+    border: thin;
+}
+
+
+.message {
+    color: #1c94c4;
+}
+
+.user {
+    color: #bf5b94;
+    padding-right: 5px;
+}
+
+.received {
+    color: black;
+    padding-right: 5px;
 }
 
 .large {
