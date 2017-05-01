@@ -42,28 +42,13 @@ $(document).ready(function () {
     });
 });
 
-
-function connectToChatServer() {
-    // Create websocket connection to server endpoint URI
-    wsocket = new WebSocket(constructURI(serviceLocation, encodeURI(room), user));
-
-    // Set message and error handlers
-    wsocket.onerror = onConnectionError;
-    wsocket.onmessage = onMessageReceived;
-}
-
 function onMessageReceived(evt) {
     // Parse JSON String to JavaScript Object
-    var msg = JSON.parse(evt.data);
+    var msg = JSON.parse(evt.data); // native API
 
     // Construct HTML snippet and print to screen
     var $messageLine = constructHTMLSnippet(msg.sender, msg.content, msg.received);
     $chatWindow.append($messageLine);
-}
-
-function onConnectionError(evt) {
-    // Print error to chat window
-    $alert.append($(evt));
 }
 
 function sendMessage() {
@@ -75,6 +60,20 @@ function sendMessage() {
     $message.val('').focus();
 }
 
+function connectToChatServer() {
+    // Create websocket connection to server endpoint URI
+    wsocket = new WebSocket(constructURI(serviceLocation, encodeURI(room), user));
+
+    // Set message and error handlers
+    wsocket.onerror = onConnectionError;
+    wsocket.onmessage = onMessageReceived;
+}
+
+function onConnectionError(evt) {
+    // Print error to chat window
+    $alert.append($(evt));
+}
+
 function leaveRoom() {
     wsocket.close();
     $chatWindow.empty();
@@ -82,14 +81,13 @@ function leaveRoom() {
     $('.chat-signin').show();
 }
 
-
-function constructURI(serviceLocation, room, user) {
-    return serviceLocation + "/" + room + "/" + user;
-}
-
 function constructHTMLSnippet(nickName, content, received) {
     return $('<tr><td class="received">' + received.substring(0, 8)
         + '</td><td class="user">' + nickName
         + '</td><td class="message">' + content
         + '</td></tr>');
+}
+
+function constructURI(serviceLocation, room, user) {
+    return serviceLocation + "/" + room + "/" + user;
 }
