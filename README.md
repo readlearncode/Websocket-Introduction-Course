@@ -29,39 +29,53 @@ Source code for the chat application used in the WebSocket Programming with Java
 	2	WebSocket functionality	
 	3	Annotation methodology	
 	4	Implement WebSocket lifecycles	
-		Respository: #### 04_04_start
-		Respository: 04_04_end
-	5	Configure the session	04_05_start/end
-	6	Lifecycle logic	04_06_start/end
+			Respository: *04_04_start*
+			Respository: *04_04_end*
+	5	Configure the session	
+			Respositroy: *04_05_start*
+			Respositroy: *04_05_end*
+	6	Lifecycle logic	
+			Respositroy: *04_06_start*
+			Respositroy: *04_06_end*
 	7	Programatic methodology	
 	8	WebSocket client API	
-	9	Code a client API	04_09_start/end
+	9	Code a client API	
+			Respositroy: *04_09_start*
+			Respositroy: *04_09_end*
 	10	✓ Challenge: Code programatic endpoint	
-	11	✓ Solution: Code programatic endpoint	04_11_solution
+	11	✓ Solution: Code programatic endpoint	
+			Respositroy: *04_11_solution*
   
 ### Messages and Encoding		
 
 	1	Use the JSON Processing API	
 	2	Encoders and decoders	
-	3	Code the encoder	05_03_start/end
-	4	Code the decoder	05_04_start/end
+	3	Code the encoder	
+	Respositroy: 05_03_start/end
+	4	Code the decoder	
+	Respositroy: 05_04_start/end
 	5	✓ Challenge: Ping/pong endpoint	
-	6	✓ Solution: Ping/pong endpoint	05_06_solution
+	6	✓ Solution: Ping/pong endpoint	
+	Respositroy: 05_06_solution
   
 ### Build Web Frontend		
 
 	1	WebSocket Web Frontend
-	2	Build the frontend	06_02_start/end
+	2	Build the frontend	
+	Respositroy: 06_02_start/end
   
 ### WebSocket Security		
 
 	1	Secure WebSocket endpoint	
-	2	Websocket Security	07_02_start/end
-	3	Websocket Encryption	07_03_start/end
+	2	Websocket Security	
+	Respositroy: 07_02_start/end
+	3	Websocket Encryption	
+	Respositroy: 07_03_start/end
   
 ### Testing WebSocket Endpoints
 
-	1	How to test WebSocket endpoints	08_01_start
+	1	How to test WebSocket endpoints	
+	Respositroy: 08_01_start
   
 ### Conclusion	
 
