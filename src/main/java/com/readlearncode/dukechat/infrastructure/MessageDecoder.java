@@ -7,7 +7,7 @@ import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
 
 /**
- * @author Alex Theedom
+ * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
 public class MessageDecoder implements Decoder.Text<Message> {
